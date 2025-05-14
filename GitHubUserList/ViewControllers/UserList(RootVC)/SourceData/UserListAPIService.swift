@@ -39,13 +39,14 @@ final class UserListAPIService: UserListAPIServiceProtocol {
                 switch httpResponse.statusCode {
                 case 200:
                     return data
-                default:
-                    // 嘗試解碼 GitHub API 的錯誤格式
+                case 403:
                     if let apiError = try? JSONDecoder().decode(GitHubUserListAPIErrorResponse.self, from: data) {
                         throw UserListAPIError.reachedRateLimit(apiError)
                     } else {
-                        throw UserListAPIError.unknownStatusCode(httpResponse.statusCode)
+                        throw UserDetailAPIError.unknown
                     }
+                default:
+                    throw UserDetailAPIError.unknown
                 }
             }
             .decode(type: [GitHubUser].self, decoder: JSONDecoder())
