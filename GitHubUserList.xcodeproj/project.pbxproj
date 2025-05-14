@@ -212,8 +212,7 @@
 			children = (
 				1875270F2DD482B200E2AE9D /* UserListAPIServiceProtocol.swift */,
 				187526DD2DD4283B00E2AE9D /* UserListAPIService.swift */,
-				187526DB2DD4265500E2AE9D /* GitHubUser.swift */,
-				187526F32DD44C2800E2AE9D /* GitHubUserListAPIErrorResponse.swift */,
+				1875271E2DD4946200E2AE9D /* Model */,
 			);
 			path = SourceData;
 			sourceTree = "<group>";
@@ -263,8 +262,7 @@
 			children = (
 				1875270D2DD4828F00E2AE9D /* UserDetailAPIServiceProtocol.swift */,
 				187527132DD483C400E2AE9D /* UserDetailAPIService.swift */,
-				187527112DD4838500E2AE9D /* GitHubUserDetail.swift */,
-				187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */,
+				1875271F2DD4946E00E2AE9D /* Model */,
 			);
 			path = SourceData;
 			sourceTree = "<group>";
@@ -277,6 +275,24 @@
 				187527182DD487A200E2AE9D /* UserDetailErrorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1875271E2DD4946200E2AE9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187526DB2DD4265500E2AE9D /* GitHubUser.swift */,
+				187526F32DD44C2800E2AE9D /* GitHubUserListAPIErrorResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1875271F2DD4946E00E2AE9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187527112DD4838500E2AE9D /* GitHubUserDetail.swift */,
+				187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

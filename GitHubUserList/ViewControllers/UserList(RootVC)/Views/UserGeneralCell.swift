@@ -75,7 +75,7 @@ class UserGeneralCell: UICollectionViewCell {
             
             loginNameLabel.topAnchor.constraint(equalTo: loginTitleLabel.topAnchor),
             loginNameLabel.leadingAnchor.constraint(equalTo: loginTitleLabel.trailingAnchor, constant: 5),
-            loginNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            loginNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
             
             siteAdminTitleLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 10),
             siteAdminTitleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15),

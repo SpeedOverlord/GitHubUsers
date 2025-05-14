@@ -12,24 +12,93 @@ final class UserDetailView: UIView {
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
 
-    private let avatarImageView: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    private let nameLabel = UILabel()
-    private let loginLabel = UILabel()
-    private let companyLabel = UILabel()
-    private let blogLabel = UILabel()
-    private let locationLabel = UILabel()
-    private let emailLabel = UILabel()
-    private let bioLabel = UILabel()
-    private let repoLabel = UILabel()
-    private let followersLabel = UILabel()
-    private let followingLabel = UILabel()
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var loginLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var companyLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var blogLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var locationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var bioLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var repoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var followersLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var followingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.numberOfLines = 0
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,40 +111,39 @@ final class UserDetailView: UIView {
     }
 
     private func setup() {
-        setupScrollView()
-        setupStackView()
+        setupViews()
     }
 
-    private func setupScrollView() {
-        addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-
-    private func setupStackView() {
+    private func setupViews() {
+        self.addSubview(avatarImageView)
+        self.addSubview(scrollView)
         scrollView.addSubview(contentStackView)
         contentStackView.axis = .vertical
-        contentStackView.spacing = 12
+        contentStackView.spacing = 20
         contentStackView.alignment = .leading
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+   
+        
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
-            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
-            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16),
-            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32)
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 150),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 150),
+            avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            scrollView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            contentStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 16),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 16),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -16),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -16),
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -32),
         ])
 
-        avatarImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        avatarImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-
-        contentStackView.addArrangedSubview(avatarImageView)
         contentStackView.addArrangedSubview(nameLabel)
         contentStackView.addArrangedSubview(loginLabel)
         contentStackView.addArrangedSubview(companyLabel)
@@ -92,15 +160,15 @@ final class UserDetailView: UIView {
 extension UserDetailView: UserDetailPresentable {
     func configure(detail: GitHubUserDetail) {
         avatarImageView.image = detail.avatarImage
-        nameLabel.text = "Name: \(detail.name ?? "-")"
-        loginLabel.text = "Login: \(detail.login)"
-        companyLabel.text = "Company: \(detail.company ?? "-")"
-        blogLabel.text = "Blog: \(detail.blog ?? "-")"
-        locationLabel.text = "Location: \(detail.location ?? "-")"
-        emailLabel.text = "Email: \(detail.email ?? "-")"
-        bioLabel.text = "Bio: \(detail.bio ?? "-")"
-        repoLabel.text = "Public Repos: \(detail.public_repos)"
-        followersLabel.text = "Followers: \(detail.followers)"
-        followingLabel.text = "Following: \(detail.following)"
+        nameLabel.text = String(localized: "name") + " \(detail.name ?? "-")"
+        loginLabel.text = String(localized: "userName") + " \(detail.login)"
+        companyLabel.text = String(localized: "company") + " \(detail.company ?? "-")"
+        blogLabel.text = String(localized: "blog") + " \(detail.blog ?? "-")"
+        locationLabel.text = String(localized: "location") + " \(detail.location ?? "-")"
+        emailLabel.text = String(localized: "email") + " \(detail.email ?? "-")"
+        bioLabel.text = String(localized: "bio") + " \(detail.bio ?? "-")"
+        repoLabel.text = String(localized: "public_repos_count") + " \(detail.public_repos)"
+        followersLabel.text = String(localized: "followers_count") + " \(detail.followers)"
+        followingLabel.text = String(localized: "following_count") + " \(detail.following)"
     }
 }
