@@ -58,7 +58,6 @@ class UserListViewController: UIViewController {
     }
     
     func configureDataSource() {
-          // 設定 dataSource，並提供 cell 的配置方法
           dataSource = UICollectionViewDiffableDataSource<UserListSection, UserListItem>(collectionView: collectionView) { (collectionView, indexPath, user) -> UICollectionViewCell? in
               guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UserCellable else {
                   return nil

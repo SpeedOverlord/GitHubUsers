@@ -13,7 +13,7 @@ class UserListViewModel {
     @Published private(set) var error: UserListAPIError?
     @Published var isLoading: Bool = false
 
-    private var userImages: [Int: UIImage] = [:] // 保存已下載的圖片
+    private var userImages: [Int: UIImage] = [:]
     private let apiService: UserListAPIService
     private var cancellables = Set<AnyCancellable>()
     private var since: Int = 0
@@ -54,7 +54,6 @@ class UserListViewModel {
         for (index, user) in users.enumerated() {
             guard let url = URL(string: user.avatar_url) else { return }
             group.enter()
-            // 使用 SDWebImage 下載圖片並儲存
             SDWebImageManager.shared.loadImage(with: url, options: .highPriority, progress: nil) { [weak self] image, _, error, _, _, _ in
                 guard let self = self else { return }
                 if let _ = error {
