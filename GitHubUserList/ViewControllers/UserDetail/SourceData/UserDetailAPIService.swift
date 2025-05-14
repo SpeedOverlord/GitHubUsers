@@ -81,7 +81,13 @@ final class UserDetailAPIService: UserDetailAPIServiceProtocol  {
                         throw UserDetailAPIError.notModified
                        
                     }
-
+                    
+                case 403:
+                    if let apiError = try? JSONDecoder().decode(GitHubUserListAPIErrorResponse.self, from: data) {
+                        throw UserListAPIError.reachedRateLimit(apiError)
+                    } else {
+                        throw UserDetailAPIError.unknown
+                    }
                 default:
                     throw UserDetailAPIError.unknown
                 }
