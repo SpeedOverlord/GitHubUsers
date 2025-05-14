@@ -44,6 +44,7 @@
 		1875271D2DD490F600E2AE9D /* UserDetailPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */; };
 		187527212DD4B12300E2AE9D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527202DD4B11A00E2AE9D /* BaseViewController.swift */; };
 		187527242DD4BA6A00E2AE9D /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 187527232DD4BA6A00E2AE9D /* ProgressHUD */; };
+		187527272DD4CF4000E2AE9D /* ETagCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527262DD4CF3D00E2AE9D /* ETagCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		1875271A2DD48E7800E2AE9D /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailPresentable.swift; sourceTree = "<group>"; };
 		187527202DD4B11A00E2AE9D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		187527262DD4CF3D00E2AE9D /* ETagCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETagCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -188,6 +190,7 @@
 		187526C82DD41D2900E2AE9D /* GitHubUserList */ = {
 			isa = PBXGroup;
 			children = (
+				187527252DD4CF2600E2AE9D /* Network */,
 				187526FB2DD46AF400E2AE9D /* Extensions */,
 				187526D42DD41DA200E2AE9D /* BaseProtocol */,
 				187526BF2DD41D2900E2AE9D /* AppDelegate.swift */,
@@ -298,6 +301,14 @@
 				187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		187527252DD4CF2600E2AE9D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				187527262DD4CF3D00E2AE9D /* ETagCache.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +478,7 @@
 				187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */,
 				187526DC2DD4265800E2AE9D /* GitHubUser.swift in Sources */,
 				1875270B2DD4816A00E2AE9D /* UserDetailViewModel.swift in Sources */,
+				187527272DD4CF4000E2AE9D /* ETagCache.swift in Sources */,
 				187526D32DD41D9900E2AE9D /* Coordinator.swift in Sources */,
 				187527042DD4747C00E2AE9D /* UserListRateLimitView.swift in Sources */,
 				187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */,

@@ -24,6 +24,9 @@ class UserDetailViewController: BaseViewController {
     
     private lazy var userDetailErrorView: UserDetailErrorView = {
         let view = UserDetailErrorView()
+        view.onRetry = { [weak self] in
+            self?.viewModel.fetchDetail()
+        }
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view

@@ -8,5 +8,5 @@
 import Combine
 
 protocol UserDetailAPIServiceProtocol {
-    func fetchUserDetail(userName: String) -> AnyPublisher<GitHubUserDetail, UserDetailAPIError>
+    func fetchUserDetail(username: String) -> AnyPublisher<GitHubUserDetail, UserDetailAPIError>
 }

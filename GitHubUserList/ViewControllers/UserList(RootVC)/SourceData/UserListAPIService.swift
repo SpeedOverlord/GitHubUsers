@@ -28,17 +28,18 @@ final class UserListAPIService: UserListAPIServiceProtocol {
         ]
 
         var request = URLRequest(url: components.url!)
-        request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-
+        request.httpMethod = "GET"
+        
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw UserListAPIError.networkError(URLError(.badServerResponse))
                 }
-
-                if (200..<300).contains(httpResponse.statusCode) {
+                
+                switch httpResponse.statusCode {
+                case 200:
                     return data
-                } else {
+                default:
                     // 嘗試解碼 GitHub API 的錯誤格式
                     if let apiError = try? JSONDecoder().decode(GitHubUserListAPIErrorResponse.self, from: data) {
                         throw UserListAPIError.reachedRateLimit(apiError)

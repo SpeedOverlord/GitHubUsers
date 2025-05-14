@@ -15,17 +15,17 @@ class UserDetailCoordinator: Coordinator {
     }
     var childCoordinators = [Coordinator]()
     
-    var userName: String
+    var username: String
     var navigationController: UINavigationController
 
-    init(navigationController: UINavigationController, userName: String) {
+    init(navigationController: UINavigationController, username: String) {
         self.navigationController = navigationController
-        self.userName = userName
+        self.username = username
     }
 
     // We don't have to use animation because this is the RootViewController.
     func start() {
-        let viewModel = UserDetailViewModel(userName: userName, apiService: UserDetailAPIService())
+        let viewModel = UserDetailViewModel(username: username, apiService: UserDetailAPIService())
         viewModel.backButtonTapped = { [weak self] in
             self?.navigationController.popViewController(animated: true)
             self?.finishSubject.send()

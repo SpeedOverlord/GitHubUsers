@@ -17,7 +17,7 @@ enum UserDetailState {
 }
 
 class UserDetailViewModel {
-    private let userName: String
+    private let username: String
     private let apiService: UserDetailAPIServiceProtocol
     
     @Published private(set) var state: UserDetailState = .idle
@@ -26,8 +26,8 @@ class UserDetailViewModel {
     
     var backButtonTapped: (() -> Void)?
 
-    init(userName: String, apiService: UserDetailAPIServiceProtocol) {
-        self.userName = userName
+    init(username: String, apiService: UserDetailAPIServiceProtocol) {
+        self.username = username
         self.apiService = apiService
     }
 }
@@ -36,7 +36,7 @@ class UserDetailViewModel {
 extension UserDetailViewModel {
     func fetchDetail() {
         self.state = .loading
-        apiService.fetchUserDetail(userName: userName)
+        apiService.fetchUserDetail(username: username)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {

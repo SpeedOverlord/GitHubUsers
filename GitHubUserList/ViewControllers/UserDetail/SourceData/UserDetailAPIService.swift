@@ -14,29 +14,65 @@ enum UserDetailAPIError: Error {
     case unknownStatusCode(Int)
     case decodingError(DecodingError)
     case networkError(Error)
+    case unknown
+    case notModified
 }
 
-final class UserDetailAPIService: UserDetailAPIServiceProtocol {
-    func fetchUserDetail(userName: String) -> AnyPublisher<GitHubUserDetail, UserDetailAPIError> {
-        let url = URL(string: "https://api.github.com/users/\(userName)")!
+final class UserDetailAPIService: UserDetailAPIServiceProtocol  {
+    private lazy var configuration: URLSessionConfiguration = {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        configuration.urlCache = URLCache(
+            memoryCapacity: 10 * 1024 * 1024,
+            diskCapacity: 50 * 1024 * 1024,
+            diskPath: "github_api_detail_cache"
+        )
+        return configuration
+    }()
+
+    
+    private lazy var session: URLSession = {
+        URLSession(configuration: configuration)
+    }()
+
+    func fetchUserDetail(username: String) -> AnyPublisher<GitHubUserDetail, UserDetailAPIError> {
+        let urlString = "https://api.github.com/users/\(username)"
+        guard let url = URL(string: urlString) else {
+            return Fail(error: .unknown).eraseToAnyPublisher()
+        }
+
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .tryMap { data, response in
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+
+        // 加入 If-None-Match
+        if let etag = ETagCache.shared.etag(for: urlString) {
+            request.setValue(etag, forHTTPHeaderField: "If-None-Match")
+        }
+
+        return session.dataTaskPublisher(for: request)
+            .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw UserDetailAPIError.networkError(URLError(.badServerResponse))
                 }
-                
-                if (200..<300).contains(httpResponse.statusCode) {
-                    return data
-                } else {
-                    // 嘗試解析 API 錯誤訊息
-                    if let apiError = try? JSONDecoder().decode(GitHubUserDetailAPIErrorResponse.self, from: data) {
-                        throw UserDetailAPIError.reachedRateLimit(apiError)
-                    } else {
-                        throw UserDetailAPIError.unknownStatusCode(httpResponse.statusCode)
+
+                switch httpResponse.statusCode {
+                case 200:
+                    if let etag = httpResponse.value(forHTTPHeaderField: "ETag") {
+                        ETagCache.shared.store(etag: etag, data: data, for: urlString)
                     }
+                    return data
+
+                case 304:
+                    if let cachedData = ETagCache.shared.data(for: urlString) {
+                        return cachedData
+                    } else {
+                        ETagCache.shared.deleteData(for: urlString)
+                        throw UserDetailAPIError.notModified
+                       
+                    }
+
+                default:
+                    throw UserDetailAPIError.unknown
                 }
             }
             .decode(type: GitHubUserDetail.self, decoder: JSONDecoder())
@@ -49,7 +85,6 @@ final class UserDetailAPIService: UserDetailAPIServiceProtocol {
                     return .networkError(error)
                 }
             }
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
