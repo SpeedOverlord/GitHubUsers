@@ -24,6 +24,8 @@
 		187526F02DD43B9000E2AE9D /* UserGeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */; };
 		187526F22DD43E7100E2AE9D /* UserCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526F12DD43E6800E2AE9D /* UserCellable.swift */; };
 		187526F42DD44C3200E2AE9D /* GitHubAPIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526F32DD44C2800E2AE9D /* GitHubAPIErrorResponse.swift */; };
+		187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
+		187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,7 @@
 		187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneralCell.swift; sourceTree = "<group>"; };
 		187526F12DD43E6800E2AE9D /* UserCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellable.swift; sourceTree = "<group>"; };
 		187526F32DD44C2800E2AE9D /* GitHubAPIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorResponse.swift; sourceTree = "<group>"; };
+		187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -108,6 +111,7 @@
 		187526742DD41ABB00E2AE9D = {
 			isa = PBXGroup;
 			children = (
+				187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */,
 				187526C82DD41D2900E2AE9D /* GitHubUserList */,
 				187526962DD41ABC00E2AE9D /* GitHubUserListTests */,
 				187526A02DD41ABC00E2AE9D /* GitHubUserListUITests */,
@@ -312,6 +316,7 @@
 			files = (
 				187526CE2DD41D2900E2AE9D /* Assets.xcassets in Resources */,
 				187526D02DD41D2900E2AE9D /* LaunchScreen.storyboard in Resources */,
+				187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 				187526D12DD41D2900E2AE9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
