@@ -1,6 +1,15 @@
 {
-  "originHash" : "dfe4f37722f706002352f4ac958cc8dc817b1ab28aebf953a6f6dd9b57c4ac40",
+  "originHash" : "ed3088b4500b03219e79df20210cab0d07be1570912cd438cf6b7675816c39c6",
   "pins" : [
+    {
+      "identity" : "progresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/relatedcode/ProgressHUD",
+      "state" : {
+        "revision" : "9364904a42cb25f58d026451140c4080a868e72e",
+        "version" : "14.1.3"
+      }
+    },
     {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",

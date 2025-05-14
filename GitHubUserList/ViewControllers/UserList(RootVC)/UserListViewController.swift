@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import ProgressHUD
 
 enum UserListSection: Hashable {
     case main
@@ -121,6 +122,7 @@ class UserListViewController: BaseViewController {
                 guard let self = self else { return }
                 switch state {
                 case .success(let users):
+                    self.indicatorHide()
                     var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
                     snapshot.appendSections([.main])
                     snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
@@ -128,6 +130,7 @@ class UserListViewController: BaseViewController {
                         self?.isFetching = false
                     }
                 case .failure(let error):
+                    self.indicatorHide()
                     switch error {
                     case .reachedRateLimit(let response):
                         let itemCount = self.collectionView.numberOfItems(inSection: 0)
@@ -153,6 +156,7 @@ class UserListViewController: BaseViewController {
                         }
                     }
                 default:
+                    self.indicatorShow()
                     break
                 }
 
@@ -174,7 +178,7 @@ extension UserListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
 
         // 觸發條件為幾乎滑到底部時
-        let threshold: CGFloat = 150 // 緩衝距離
+        let threshold: CGFloat = 50 // 緩衝距離
         let isNearBottom = offsetY + height >= contentHeight - threshold
         
         if isNearBottom {

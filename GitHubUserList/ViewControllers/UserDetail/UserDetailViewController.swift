@@ -74,8 +74,10 @@ class UserDetailViewController: BaseViewController {
                 guard let self = self else { return }
                 switch state {
                 case .loading, .idle:
+                    self.indicatorShow()
                     break
                 case .failure(let error):
+                    self.indicatorHide()
                     var message: String = ""
                     switch error {
                     case .reachedRateLimit(_):
@@ -87,6 +89,7 @@ class UserDetailViewController: BaseViewController {
                     self.userDetailErrorView.isHidden = false
                     self.view.bringSubviewToFront(self.userDetailErrorView)
                 case .success(let detail):
+                    self.indicatorHide()
                     self.view.bringSubviewToFront(self.userDetailView)
                     self.userDetailView.configure(detail: detail)
                 }

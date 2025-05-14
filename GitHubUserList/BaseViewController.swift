@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
@@ -17,5 +18,20 @@ class BaseViewController: UIViewController {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
+    }
+}
+
+extension BaseViewController {
+    func indicatorShow() {
+        ProgressHUD.animationType = .activityIndicator
+        ProgressHUD.colorHUD = .clear
+        ProgressHUD.colorAnimation = .systemBlue
+        ProgressHUD.colorProgress = .systemBlue
+        ProgressHUD.animate()
+    }
+    
+    func indicatorHide() {
+        ProgressHUD.dismiss()
+        ProgressHUD.remove()
     }
 }
