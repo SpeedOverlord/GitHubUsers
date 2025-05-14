@@ -115,49 +115,49 @@ class UserListViewController: BaseViewController {
     }
 
     private func bindViewModel() {
-        viewModel.$users
+        viewModel.$state
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] users in
-                var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
-                self?.dataSource?.apply(snapshot, animatingDifferences: true) { [weak self] in
-                    self?.isFetching = false
-                }
-            }
-            .store(in: &cancellables)
-
-        viewModel.$error
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .sink { [weak self] error in
+            .sink{ [weak self] state in
                 guard let self = self else { return }
-                switch error {
-                case .reachedRateLimit(let response):
-                    let itemCount = self.collectionView.numberOfItems(inSection: 0)
-                    if itemCount == 0 {
-                        self.userListRateLimitView.isHidden = false
-                        self.view.bringSubviewToFront(self.userListRateLimitView)
-                    } else {
-                        self.userListRateLimitView.isHidden = true
+                switch state {
+                case .success(let users):
+                    var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
+                    snapshot.appendSections([.main])
+                    snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
+                    self.dataSource?.apply(snapshot, animatingDifferences: true) { [weak self] in
+                        self?.isFetching = false
                     }
-                    if self.presentedViewController == nil {
-                        let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                        })
-                        self.present(alert, animated: true)
+                case .failure(let error):
+                    switch error {
+                    case .reachedRateLimit(let response):
+                        let itemCount = self.collectionView.numberOfItems(inSection: 0)
+                        if itemCount == 0 {
+                            self.userListRateLimitView.isHidden = false
+                            self.view.bringSubviewToFront(self.userListRateLimitView)
+                        } else {
+                            self.userListRateLimitView.isHidden = true
+                        }
+                        if self.presentedViewController == nil {
+                            let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                            })
+                            self.present(alert, animated: true)
+                        }
+                    default:
+                        if self.presentedViewController == nil {
+                            let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self]_ in
+                                self?.viewModel.fetchUsers()
+                            })
+                            self.present(alert, animated: true)
+                        }
                     }
                 default:
-                    if self.presentedViewController == nil {
-                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self]_ in
-                            self?.viewModel.fetchUsers()
-                        })
-                        self.present(alert, animated: true)
-                    }
+                    break
                 }
-            }
-            .store(in: &cancellables)
+
+            }.store(in: &cancellables)
+        
     }
 }
 

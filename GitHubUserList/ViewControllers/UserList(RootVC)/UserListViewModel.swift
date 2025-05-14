@@ -8,10 +8,17 @@
 import Combine
 import SDWebImage
 
+enum UserListState {
+    case idle
+    case loading
+    case success([GitHubUser])
+    case failure(UserListAPIError)
+}
+
+
 class UserListViewModel {
-    @Published private(set) var users: [GitHubUser] = []
-    @Published private(set) var error: UserListAPIError?
-    @Published var isLoading: Bool = false
+    private var users: [GitHubUser] = []
+    @Published private(set) var state: UserListState = .idle
 
     private var userImages: [Int: UIImage] = [:]
     private let apiService: UserListAPIServiceProtocol
@@ -32,13 +39,12 @@ extension UserListViewModel {
     func fetchUsers() {
         guard !isFetching && hasMoreData else { return }
         isFetching = true
-        isLoading = true
+        state = .loading
         apiService.fetchUsers(since: since)
             .sink { [weak self] completion in
                 self?.isFetching = false
-                self?.isLoading = false
                 if case let .failure(error) = completion {
-                    self?.error = error
+                    self?.state = .failure(error)
                 }
             } receiveValue: { [weak self] newUsers in
                 guard let self = self else { return }
@@ -71,8 +77,10 @@ extension UserListViewModel {
             }
         }
         
-        group.notify(queue: .main) {
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
             self.users = combinedUsers
+            self.state = .success(self.users)
         }
     }
 
