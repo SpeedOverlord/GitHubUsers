@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct GitHubUser: Identifiable, Codable {
+struct GitHubUser: Codable, Hashable {
     let id: Int
     let login: String
     let avatar_url: String

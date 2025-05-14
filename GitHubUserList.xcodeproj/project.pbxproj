@@ -11,7 +11,6 @@
 		187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526BE2DD41D2900E2AE9D /* BaseCoordinator.swift */; };
 		187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526BF2DD41D2900E2AE9D /* AppDelegate.swift */; };
 		187526CC2DD41D2900E2AE9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526C62DD41D2900E2AE9D /* SceneDelegate.swift */; };
-		187526CD2DD41D2900E2AE9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526C72DD41D2900E2AE9D /* ViewController.swift */; };
 		187526CE2DD41D2900E2AE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187526C02DD41D2900E2AE9D /* Assets.xcassets */; };
 		187526D02DD41D2900E2AE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187526C32DD41D2900E2AE9D /* LaunchScreen.storyboard */; };
 		187526D12DD41D2900E2AE9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187526C52DD41D2900E2AE9D /* Main.storyboard */; };
@@ -20,6 +19,32 @@
 		187526D92DD4261100E2AE9D /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526D82DD4260800E2AE9D /* UserListViewModel.swift */; };
 		187526DC2DD4265800E2AE9D /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526DB2DD4265500E2AE9D /* GitHubUser.swift */; };
 		187526DE2DD4284400E2AE9D /* UserListAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526DD2DD4283B00E2AE9D /* UserListAPIService.swift */; };
+		187526ED2DD4325900E2AE9D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 187526EC2DD4325900E2AE9D /* SDWebImage */; };
+		187526F02DD43B9000E2AE9D /* UserGeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */; };
+		187526F22DD43E7100E2AE9D /* UserCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526F12DD43E6800E2AE9D /* UserCellable.swift */; };
+		187526F42DD44C3200E2AE9D /* GitHubUserListAPIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526F32DD44C2800E2AE9D /* GitHubUserListAPIErrorResponse.swift */; };
+		187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
+		187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
+		187526F92DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
+		187526FA2DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
+		187526FD2DD46B0900E2AE9D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */; };
+		187526FF2DD46C9B00E2AE9D /* UIColor+UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */; };
+		187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */; };
+		187527042DD4747C00E2AE9D /* UserListRateLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527032DD4746300E2AE9D /* UserListRateLimitView.swift */; };
+		187527072DD47D6300E2AE9D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527062DD47D5B00E2AE9D /* UserDetailViewController.swift */; };
+		187527092DD47DA500E2AE9D /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527082DD47D9C00E2AE9D /* UserDetailCoordinator.swift */; };
+		1875270B2DD4816A00E2AE9D /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875270A2DD4816400E2AE9D /* UserDetailViewModel.swift */; };
+		1875270E2DD4829000E2AE9D /* UserDetailAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875270D2DD4828F00E2AE9D /* UserDetailAPIServiceProtocol.swift */; };
+		187527102DD482B600E2AE9D /* UserListAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875270F2DD482B200E2AE9D /* UserListAPIServiceProtocol.swift */; };
+		187527122DD4838700E2AE9D /* GitHubUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527112DD4838500E2AE9D /* GitHubUserDetail.swift */; };
+		187527142DD483C800E2AE9D /* UserDetailAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527132DD483C400E2AE9D /* UserDetailAPIService.swift */; };
+		187527162DD4857300E2AE9D /* GitHubUserDetailAPIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */; };
+		187527192DD487A300E2AE9D /* UserDetailErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527182DD487A200E2AE9D /* UserDetailErrorView.swift */; };
+		1875271B2DD48E7B00E2AE9D /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875271A2DD48E7800E2AE9D /* UserDetailView.swift */; };
+		1875271D2DD490F600E2AE9D /* UserDetailPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */; };
+		187527212DD4B12300E2AE9D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527202DD4B11A00E2AE9D /* BaseViewController.swift */; };
+		187527242DD4BA6A00E2AE9D /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 187527232DD4BA6A00E2AE9D /* ProgressHUD */; };
+		187527272DD4CF4000E2AE9D /* ETagCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527262DD4CF3D00E2AE9D /* ETagCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +76,33 @@
 		187526C22DD41D2900E2AE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187526C42DD41D2900E2AE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		187526C62DD41D2900E2AE9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		187526C72DD41D2900E2AE9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		187526D22DD41D9900E2AE9D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		187526D52DD4210000E2AE9D /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
 		187526D82DD4260800E2AE9D /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		187526DB2DD4265500E2AE9D /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
 		187526DD2DD4283B00E2AE9D /* UserListAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListAPIService.swift; sourceTree = "<group>"; };
+		187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneralCell.swift; sourceTree = "<group>"; };
+		187526F12DD43E6800E2AE9D /* UserCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellable.swift; sourceTree = "<group>"; };
+		187526F32DD44C2800E2AE9D /* GitHubUserListAPIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserListAPIErrorResponse.swift; sourceTree = "<group>"; };
+		187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		187526F82DD4630300E2AE9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UserInterfaceStyle.swift"; sourceTree = "<group>"; };
+		187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		187527032DD4746300E2AE9D /* UserListRateLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRateLimitView.swift; sourceTree = "<group>"; };
+		187527062DD47D5B00E2AE9D /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		187527082DD47D9C00E2AE9D /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
+		1875270A2DD4816400E2AE9D /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		1875270D2DD4828F00E2AE9D /* UserDetailAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		1875270F2DD482B200E2AE9D /* UserListAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListAPIServiceProtocol.swift; sourceTree = "<group>"; };
+		187527112DD4838500E2AE9D /* GitHubUserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserDetail.swift; sourceTree = "<group>"; };
+		187527132DD483C400E2AE9D /* UserDetailAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailAPIService.swift; sourceTree = "<group>"; };
+		187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserDetailAPIErrorResponse.swift; sourceTree = "<group>"; };
+		187527182DD487A200E2AE9D /* UserDetailErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailErrorView.swift; sourceTree = "<group>"; };
+		1875271A2DD48E7800E2AE9D /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailPresentable.swift; sourceTree = "<group>"; };
+		187527202DD4B11A00E2AE9D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		187527262DD4CF3D00E2AE9D /* ETagCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETagCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -77,6 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187526ED2DD4325900E2AE9D /* SDWebImage in Frameworks */,
+				187527242DD4BA6A00E2AE9D /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +148,7 @@
 		187526742DD41ABB00E2AE9D = {
 			isa = PBXGroup;
 			children = (
+				187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */,
 				187526C82DD41D2900E2AE9D /* GitHubUserList */,
 				187526962DD41ABC00E2AE9D /* GitHubUserListTests */,
 				187526A02DD41ABC00E2AE9D /* GitHubUserListUITests */,
@@ -123,6 +172,7 @@
 				187526D52DD4210000E2AE9D /* UserListCoordinator.swift */,
 				187526D82DD4260800E2AE9D /* UserListViewModel.swift */,
 				187526BB2DD41D2900E2AE9D /* UserListViewController.swift */,
+				187526EE2DD43B7400E2AE9D /* Views */,
 				187526DA2DD4263B00E2AE9D /* SourceData */,
 			);
 			path = "UserList(RootVC)";
@@ -132,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				187526BC2DD41D2900E2AE9D /* UserList(RootVC) */,
+				187527052DD47D4800E2AE9D /* UserDetail */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -139,16 +190,19 @@
 		187526C82DD41D2900E2AE9D /* GitHubUserList */ = {
 			isa = PBXGroup;
 			children = (
+				187527252DD4CF2600E2AE9D /* Network */,
+				187526FB2DD46AF400E2AE9D /* Extensions */,
 				187526D42DD41DA200E2AE9D /* BaseProtocol */,
 				187526BF2DD41D2900E2AE9D /* AppDelegate.swift */,
 				187526C62DD41D2900E2AE9D /* SceneDelegate.swift */,
 				187526BE2DD41D2900E2AE9D /* BaseCoordinator.swift */,
+				187527202DD4B11A00E2AE9D /* BaseViewController.swift */,
 				187526BD2DD41D2900E2AE9D /* ViewControllers */,
 				187526C02DD41D2900E2AE9D /* Assets.xcassets */,
 				187526C12DD41D2900E2AE9D /* Info.plist */,
 				187526C32DD41D2900E2AE9D /* LaunchScreen.storyboard */,
 				187526C52DD41D2900E2AE9D /* Main.storyboard */,
-				187526C72DD41D2900E2AE9D /* ViewController.swift */,
+				187526F82DD4630300E2AE9D /* Localizable.xcstrings */,
 			);
 			path = GitHubUserList;
 			sourceTree = "<group>";
@@ -164,10 +218,97 @@
 		187526DA2DD4263B00E2AE9D /* SourceData */ = {
 			isa = PBXGroup;
 			children = (
-				187526DB2DD4265500E2AE9D /* GitHubUser.swift */,
+				1875270F2DD482B200E2AE9D /* UserListAPIServiceProtocol.swift */,
 				187526DD2DD4283B00E2AE9D /* UserListAPIService.swift */,
+				1875271E2DD4946200E2AE9D /* Model */,
 			);
 			path = SourceData;
+			sourceTree = "<group>";
+		};
+		187526EE2DD43B7400E2AE9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				187527032DD4746300E2AE9D /* UserListRateLimitView.swift */,
+				187526F12DD43E6800E2AE9D /* UserCellable.swift */,
+				187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		187526FB2DD46AF400E2AE9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				187527002DD46CB000E2AE9D /* UIColor */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		187527002DD46CB000E2AE9D /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */,
+				187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */,
+				187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		187527052DD47D4800E2AE9D /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				187527082DD47D9C00E2AE9D /* UserDetailCoordinator.swift */,
+				1875270A2DD4816400E2AE9D /* UserDetailViewModel.swift */,
+				187527062DD47D5B00E2AE9D /* UserDetailViewController.swift */,
+				187527172DD4879200E2AE9D /* Views */,
+				1875270C2DD4828000E2AE9D /* SourceData */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		1875270C2DD4828000E2AE9D /* SourceData */ = {
+			isa = PBXGroup;
+			children = (
+				1875270D2DD4828F00E2AE9D /* UserDetailAPIServiceProtocol.swift */,
+				187527132DD483C400E2AE9D /* UserDetailAPIService.swift */,
+				1875271F2DD4946E00E2AE9D /* Model */,
+			);
+			path = SourceData;
+			sourceTree = "<group>";
+		};
+		187527172DD4879200E2AE9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */,
+				1875271A2DD48E7800E2AE9D /* UserDetailView.swift */,
+				187527182DD487A200E2AE9D /* UserDetailErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1875271E2DD4946200E2AE9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187526DB2DD4265500E2AE9D /* GitHubUser.swift */,
+				187526F32DD44C2800E2AE9D /* GitHubUserListAPIErrorResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1875271F2DD4946E00E2AE9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187527112DD4838500E2AE9D /* GitHubUserDetail.swift */,
+				187527152DD4856D00E2AE9D /* GitHubUserDetailAPIErrorResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		187527252DD4CF2600E2AE9D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				187527262DD4CF3D00E2AE9D /* ETagCache.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +328,8 @@
 			);
 			name = GitHubUserList;
 			packageProductDependencies = (
+				187526EC2DD4325900E2AE9D /* SDWebImage */,
+				187527232DD4BA6A00E2AE9D /* ProgressHUD */,
 			);
 			productName = GitHubUserList;
 			productReference = 1875267D2DD41ABB00E2AE9D /* GitHubUserList.app */;
@@ -267,9 +410,14 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 187526742DD41ABB00E2AE9D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				187527222DD4BA6A00E2AE9D /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1875267E2DD41ABB00E2AE9D /* Products */;
 			projectDirPath = "";
@@ -288,7 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				187526CE2DD41D2900E2AE9D /* Assets.xcassets in Resources */,
+				187526F92DD4630300E2AE9D /* Localizable.xcstrings in Resources */,
 				187526D02DD41D2900E2AE9D /* LaunchScreen.storyboard in Resources */,
+				187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 				187526D12DD41D2900E2AE9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187526FA2DD4630300E2AE9D /* Localizable.xcstrings in Resources */,
+				187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,16 +466,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187527072DD47D6300E2AE9D /* UserDetailViewController.swift in Sources */,
+				187526F22DD43E7100E2AE9D /* UserCellable.swift in Sources */,
+				187527102DD482B600E2AE9D /* UserListAPIServiceProtocol.swift in Sources */,
+				187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */,
+				1875271B2DD48E7B00E2AE9D /* UserDetailView.swift in Sources */,
+				187527212DD4B12300E2AE9D /* BaseViewController.swift in Sources */,
 				187526C92DD41D2900E2AE9D /* UserListViewController.swift in Sources */,
+				1875270E2DD4829000E2AE9D /* UserDetailAPIServiceProtocol.swift in Sources */,
 				187526D92DD4261100E2AE9D /* UserListViewModel.swift in Sources */,
 				187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */,
 				187526DC2DD4265800E2AE9D /* GitHubUser.swift in Sources */,
+				1875270B2DD4816A00E2AE9D /* UserDetailViewModel.swift in Sources */,
+				187527272DD4CF4000E2AE9D /* ETagCache.swift in Sources */,
 				187526D32DD41D9900E2AE9D /* Coordinator.swift in Sources */,
+				187527042DD4747C00E2AE9D /* UserListRateLimitView.swift in Sources */,
 				187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */,
+				187526F42DD44C3200E2AE9D /* GitHubUserListAPIErrorResponse.swift in Sources */,
 				187526CC2DD41D2900E2AE9D /* SceneDelegate.swift in Sources */,
+				187527142DD483C800E2AE9D /* UserDetailAPIService.swift in Sources */,
+				187527092DD47DA500E2AE9D /* UserDetailCoordinator.swift in Sources */,
+				1875271D2DD490F600E2AE9D /* UserDetailPresentable.swift in Sources */,
+				187527162DD4857300E2AE9D /* GitHubUserDetailAPIErrorResponse.swift in Sources */,
+				187526FD2DD46B0900E2AE9D /* UIColor+Hex.swift in Sources */,
+				187526FF2DD46C9B00E2AE9D /* UIColor+UserInterfaceStyle.swift in Sources */,
+				187527122DD4838700E2AE9D /* GitHubUserDetail.swift in Sources */,
+				187527192DD487A300E2AE9D /* UserDetailErrorView.swift in Sources */,
 				187526DE2DD4284400E2AE9D /* UserListAPIService.swift in Sources */,
 				187526D62DD4210000E2AE9D /* UserListCoordinator.swift in Sources */,
-				187526CD2DD41D2900E2AE9D /* ViewController.swift in Sources */,
+				187526F02DD43B9000E2AE9D /* UserGeneralCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,9 +557,11 @@
 				DEVELOPMENT_TEAM = 856SN3VV7T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubUserList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHub Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,9 +589,11 @@
 				DEVELOPMENT_TEAM = 856SN3VV7T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubUserList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHub Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,6 +671,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -553,6 +729,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -669,6 +846,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
+		187527222DD4BA6A00E2AE9D /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		187526EC2DD4325900E2AE9D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		187527232DD4BA6A00E2AE9D /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 187527222DD4BA6A00E2AE9D /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 187526752DD41ABB00E2AE9D /* Project object */;
 }
