@@ -40,6 +40,10 @@ class UserDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBarBackButton()
+        backButtonDidTapped = { [weak self] in
+            self?.viewModel.backButtonDidTap()
+        }
         setupBackgroundView()
         setupSubviews()
         bindViewModel()

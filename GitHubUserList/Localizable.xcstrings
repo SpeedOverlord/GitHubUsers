@@ -1,11 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "bio" : {
-
-    },
-    "Bio" : {
+    "back" : {
       "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
+        }
+      }
+    },
+    "bio" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class UserDetailCoordinator: Coordinator {
-    deinit {
-        print("UserDetailCoordinator deinit")
+    private let finishSubject = PassthroughSubject<Void, Never>()
+    var finished: AnyPublisher<Void, Never> {
+          finishSubject.eraseToAnyPublisher()
     }
-    
     var childCoordinators = [Coordinator]()
     
     var userName: String
@@ -25,6 +26,10 @@ class UserDetailCoordinator: Coordinator {
     // We don't have to use animation because this is the RootViewController.
     func start() {
         let viewModel = UserDetailViewModel(userName: userName, apiService: UserDetailAPIService())
+        viewModel.backButtonTapped = { [weak self] in
+            self?.navigationController.popViewController(animated: true)
+            self?.finishSubject.send()
+        }
         let vc = UserDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

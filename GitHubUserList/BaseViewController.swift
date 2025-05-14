@@ -9,6 +9,7 @@ import UIKit
 import ProgressHUD
 
 class BaseViewController: UIViewController {
+    var backButtonDidTapped: (() -> Void)?
     override func viewDidLoad() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -18,6 +19,22 @@ class BaseViewController: UIViewController {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
+    }
+}
+
+extension BaseViewController {
+    func setupNavigationBarBackButton() {
+        let backButton = UIBarButtonItem(
+            title: String(localized: "back"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func backButtonTapped() {
+        backButtonDidTapped?()
     }
 }
 

@@ -23,6 +23,8 @@ class UserDetailViewModel {
     @Published private(set) var state: UserDetailState = .idle
 
     private var cancellables = Set<AnyCancellable>()
+    
+    var backButtonTapped: (() -> Void)?
 
     init(userName: String, apiService: UserDetailAPIServiceProtocol) {
         self.userName = userName
@@ -66,5 +68,11 @@ extension UserDetailViewModel {
         group.notify(queue: .main) {
             self.state = .success(modifiedUserDetail)
         }
+    }
+}
+
+extension UserDetailViewModel {
+    func backButtonDidTap() {
+        backButtonTapped?()
     }
 }

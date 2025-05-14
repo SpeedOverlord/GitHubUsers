@@ -6,15 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 protocol UserListCoordinatorProtocol: AnyObject {
     func navigateToUserDetailPage(with userName: String)
 }
 
 class UserListCoordinator: Coordinator {
-    deinit {
-        print("UserListCoordinator deinit")
-    }
+    private var cancellables = Set<AnyCancellable>()
     var childCoordinators = [Coordinator]()
     
     var navigationController: UINavigationController
@@ -38,6 +37,12 @@ extension UserListCoordinator: UserListCoordinatorProtocol {
     func navigateToUserDetailPage(with userName: String) {
         let userDetailCoordinator = UserDetailCoordinator(navigationController: navigationController, userName: userName)
         add(child: userDetailCoordinator)
+        userDetailCoordinator.finished.sink { [weak self, weak userDetailCoordinator] in
+            if let coordinator = userDetailCoordinator {
+                self?.remove(child: coordinator)
+            }
+        }
+        .store(in: &cancellables)
         userDetailCoordinator.start()
     }
 }
