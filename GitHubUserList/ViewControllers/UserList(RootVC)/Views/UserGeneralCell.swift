@@ -23,7 +23,7 @@ class UserGeneralCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
         label.textColor = .white
-        label.text = "使用者名稱:"
+        label.text = String(localized: "userName")
         return label
     }()
     
@@ -33,6 +33,8 @@ class UserGeneralCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 14)
         label.textColor = .white
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
     
@@ -41,7 +43,7 @@ class UserGeneralCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
         label.textColor = .white
-        label.text = "是否為最高權限使用者:"
+        label.text = String(localized: "is_superuser")
         return label
     }()
     
@@ -71,17 +73,15 @@ class UserGeneralCell: UICollectionViewCell {
             loginTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             loginTitleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15),
             
-            loginNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            loginNameLabel.topAnchor.constraint(equalTo: loginTitleLabel.topAnchor),
             loginNameLabel.leadingAnchor.constraint(equalTo: loginTitleLabel.trailingAnchor, constant: 5),
             loginNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             siteAdminTitleLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 10),
             siteAdminTitleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 15),
-            
-            siteAdminStatusLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 10),
-            siteAdminStatusLabel.leadingAnchor.constraint(equalTo: siteAdminTitleLabel.trailingAnchor, constant: 5),
-            siteAdminStatusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            siteAdminStatusLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+
+            siteAdminStatusLabel.topAnchor.constraint(equalTo: siteAdminTitleLabel.topAnchor),
+            siteAdminStatusLabel.leadingAnchor.constraint(equalTo: siteAdminTitleLabel.trailingAnchor, constant: 5),            siteAdminStatusLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
             
         ])
     }
@@ -95,6 +95,6 @@ extension UserGeneralCell: UserCellable {
     func configure(user data: GitHubUser) {
         imageView.image = data.avatarImage
         loginNameLabel.text = data.login
-        siteAdminStatusLabel.text = data.site_admin ? "True" : "False"
+        siteAdminStatusLabel.text = data.site_admin ? String(localized: "yes") : String(localized: "no")
     }
 }

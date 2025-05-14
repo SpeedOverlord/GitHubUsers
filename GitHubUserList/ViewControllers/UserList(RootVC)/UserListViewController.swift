@@ -41,7 +41,7 @@ class UserListViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(view.frame.size.width), heightDimension: .estimated(50))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
