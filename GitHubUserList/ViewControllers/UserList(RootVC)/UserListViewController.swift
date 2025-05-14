@@ -27,6 +27,9 @@ class UserListViewController: UIViewController {
         let view = UserListRateLimitView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
+        view.onRetry = { [weak self] in
+            self?.viewModel.fetchUsers()
+        }
         return view
     }()
 
@@ -163,8 +166,7 @@ extension UserListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
 
         // 觸發條件為幾乎滑到底部時
-        let threshold: CGFloat = 30 // 緩衝距離
-        print("offsetY + height = \(offsetY + height), contentHeight - threshold = \(contentHeight - threshold)")
+        let threshold: CGFloat = 100 // 緩衝距離
         let isNearBottom = offsetY + height >= contentHeight - threshold
         
         if isNearBottom {
