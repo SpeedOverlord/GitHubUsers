@@ -22,7 +22,7 @@ class UserGeneralCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .labelColor
         label.text = String(localized: "userName")
         return label
     }()
@@ -31,7 +31,7 @@ class UserGeneralCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .labelColor
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
@@ -42,7 +42,7 @@ class UserGeneralCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .labelColor
         label.text = String(localized: "is_superuser")
         return label
     }()
@@ -51,7 +51,7 @@ class UserGeneralCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .labelColor
         return label
     }()
     

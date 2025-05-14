@@ -33,11 +33,16 @@ class UserListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackgroundView()
         setupCollectionView()
         configureDataSource()
         layoutView()
         bindViewModel()
         viewModel.fetchUsers()
+    }
+    
+    private func setupBackgroundView() {
+        view.backgroundColor = .backgroundColor
     }
 
     private func setupCollectionView() {

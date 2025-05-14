@@ -27,6 +27,9 @@
 		187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
 		187526F92DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
 		187526FA2DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
+		187526FD2DD46B0900E2AE9D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */; };
+		187526FF2DD46C9B00E2AE9D /* UIColor+UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */; };
+		187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		187526F32DD44C2800E2AE9D /* GitHubAPIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorResponse.swift; sourceTree = "<group>"; };
 		187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		187526F82DD4630300E2AE9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UserInterfaceStyle.swift"; sourceTree = "<group>"; };
+		187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -153,6 +159,7 @@
 		187526C82DD41D2900E2AE9D /* GitHubUserList */ = {
 			isa = PBXGroup;
 			children = (
+				187526FB2DD46AF400E2AE9D /* Extensions */,
 				187526D42DD41DA200E2AE9D /* BaseProtocol */,
 				187526BF2DD41D2900E2AE9D /* AppDelegate.swift */,
 				187526C62DD41D2900E2AE9D /* SceneDelegate.swift */,
@@ -192,6 +199,24 @@
 				187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		187526FB2DD46AF400E2AE9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				187527002DD46CB000E2AE9D /* UIColor */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		187527002DD46CB000E2AE9D /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */,
+				187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */,
+				187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187526F22DD43E7100E2AE9D /* UserCellable.swift in Sources */,
+				187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */,
 				187526C92DD41D2900E2AE9D /* UserListViewController.swift in Sources */,
 				187526D92DD4261100E2AE9D /* UserListViewModel.swift in Sources */,
 				187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */,
@@ -356,6 +382,8 @@
 				187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */,
 				187526F42DD44C3200E2AE9D /* GitHubAPIErrorResponse.swift in Sources */,
 				187526CC2DD41D2900E2AE9D /* SceneDelegate.swift in Sources */,
+				187526FD2DD46B0900E2AE9D /* UIColor+Hex.swift in Sources */,
+				187526FF2DD46C9B00E2AE9D /* UIColor+UserInterfaceStyle.swift in Sources */,
 				187526DE2DD4284400E2AE9D /* UserListAPIService.swift in Sources */,
 				187526D62DD4210000E2AE9D /* UserListCoordinator.swift in Sources */,
 				187526F02DD43B9000E2AE9D /* UserGeneralCell.swift in Sources */,
