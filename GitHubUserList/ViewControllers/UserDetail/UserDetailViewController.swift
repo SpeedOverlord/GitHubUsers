@@ -97,6 +97,7 @@ class UserDetailViewController: BaseViewController {
                     self.view.bringSubviewToFront(self.userDetailErrorView)
                 case .success(let detail):
                     self.indicatorHide()
+                    self.userDetailErrorView.isHidden = true
                     self.view.bringSubviewToFront(self.userDetailView)
                     self.userDetailView.configure(detail: detail)
                 }

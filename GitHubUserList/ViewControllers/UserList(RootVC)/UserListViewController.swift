@@ -123,6 +123,7 @@ class UserListViewController: BaseViewController {
                 switch state {
                 case .success(let users):
                     self.indicatorHide()
+                    self.userListRateLimitView.isHidden = true
                     var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
                     snapshot.appendSections([.main])
                     snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
