@@ -48,6 +48,7 @@ class UserListViewController: BaseViewController {
         setupBackgroundView()
         setupTitle()
         setupSubviews()
+        setupNavigationBarSearchButton()
         setupCollectionView()
         configureDataSource()
         layoutView()
@@ -72,6 +73,40 @@ class UserListViewController: BaseViewController {
             userListRateLimitView.widthAnchor.constraint(equalTo: view.widthAnchor),
             userListRateLimitView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
+    }
+    
+    private func setupNavigationBarSearchButton() {
+        let searchButton = UIBarButtonItem(
+            title: String(localized: "search"),
+            style: .plain,
+            target: self,
+            action: #selector(searchButtonTapped)
+        )
+        navigationItem.rightBarButtonItem = searchButton
+    }
+    
+    @objc private func searchButtonTapped() {
+        if self.presentedViewController == nil {
+            let alert = UIAlertController(title: String(localized: "enter_username"), message: nil, preferredStyle: .alert)
+            
+            alert.addTextField { textField in
+                textField.placeholder = String(localized: "enter_username")
+            }
+            
+            let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel, handler: nil)
+            
+            let confirmAction = UIAlertAction(title: String(localized: "confirm"), style: .default) { [weak self] _ in
+                if let name = alert.textFields?.first?.text, !name.isEmpty {
+                    alert.dismiss(animated: true)
+                    self?.viewModel.searchUser(username: name)
+                }
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(confirmAction)
+            
+            self.present(alert, animated: true)
+        }
     }
 
     private func setupCollectionView() {

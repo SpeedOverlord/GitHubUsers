@@ -25,7 +25,7 @@ class UserListCoordinator: Coordinator {
     // We don't have to use animation because this is the RootViewController.
     func start() {
         let viewModel = UserListViewModel(apiService: UserListAPIService())
-        viewModel.onSelectUser = { [weak self] username in
+        viewModel.onFetchUser = { [weak self] username in
             self?.navigateToUserDetailPage(with: username)
         }
         let vc = UserListViewController(viewModel: viewModel)

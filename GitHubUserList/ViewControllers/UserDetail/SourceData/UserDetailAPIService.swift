@@ -16,6 +16,7 @@ enum UserDetailAPIError: Error {
     case networkError(Error)
     case unknown
     case notModified
+    case notFound
 }
 
 final class UserDetailAPIService: UserDetailAPIServiceProtocol  {
@@ -88,6 +89,8 @@ final class UserDetailAPIService: UserDetailAPIServiceProtocol  {
                     } else {
                         throw UserDetailAPIError.unknown
                     }
+                case 404:
+                    throw UserDetailAPIError.notFound
                 default:
                     throw UserDetailAPIError.unknown
                 }

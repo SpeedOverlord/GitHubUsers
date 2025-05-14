@@ -27,7 +27,7 @@ class UserListViewModel {
     private var isFetching: Bool = false
     private var hasMoreData: Bool = true
     
-    var onSelectUser: ((String) -> Void)?
+    var onFetchUser: ((String) -> Void)?
 
     init(apiService: UserListAPIService) {
         self.apiService = apiService
@@ -98,6 +98,13 @@ extension UserListViewModel {
     func selectUser(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         let login = user.login
-        onSelectUser?(login)
+        onFetchUser?(login)
+    }
+}
+
+//MARK: - Search handling
+extension UserListViewModel {
+    func searchUser(username: String) {
+        onFetchUser?(username)
     }
 }

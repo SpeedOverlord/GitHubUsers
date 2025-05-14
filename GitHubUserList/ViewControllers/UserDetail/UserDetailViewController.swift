@@ -89,6 +89,8 @@ class UserDetailViewController: BaseViewController {
                     switch error {
                     case .reachedRateLimit(_):
                         message = String(localized: "temporarily_unavailable")
+                    case .notFound:
+                        message = String(localized: "detail_not_found")
                     default:
                         message = String(localized: "unknown_error")
                     }
