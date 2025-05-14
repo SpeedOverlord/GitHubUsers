@@ -20,6 +20,7 @@
 		187526D92DD4261100E2AE9D /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526D82DD4260800E2AE9D /* UserListViewModel.swift */; };
 		187526DC2DD4265800E2AE9D /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526DB2DD4265500E2AE9D /* GitHubUser.swift */; };
 		187526DE2DD4284400E2AE9D /* UserListAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526DD2DD4283B00E2AE9D /* UserListAPIService.swift */; };
+		187526ED2DD4325900E2AE9D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 187526EC2DD4325900E2AE9D /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187526ED2DD4325900E2AE9D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +189,7 @@
 			);
 			name = GitHubUserList;
 			packageProductDependencies = (
+				187526EC2DD4325900E2AE9D /* SDWebImage */,
 			);
 			productName = GitHubUserList;
 			productReference = 1875267D2DD41ABB00E2AE9D /* GitHubUserList.app */;
@@ -270,6 +273,9 @@
 			);
 			mainGroup = 187526742DD41ABB00E2AE9D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1875267E2DD41ABB00E2AE9D /* Products */;
 			projectDirPath = "";
@@ -669,6 +675,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		187526EC2DD4325900E2AE9D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 187526EB2DD4325900E2AE9D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 187526752DD41ABB00E2AE9D /* Project object */;
 }
