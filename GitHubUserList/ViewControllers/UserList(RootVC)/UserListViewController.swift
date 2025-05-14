@@ -133,13 +133,14 @@ class UserListViewController: BaseViewController {
                     self.indicatorHide()
                     switch error {
                     case .reachedRateLimit(let response):
-                        let itemCount = self.collectionView.numberOfItems(inSection: 0)
-                        if itemCount == 0 {
+                        let sectionCount = self.collectionView.numberOfSections
+                        if sectionCount == 0 {
                             self.userListRateLimitView.isHidden = false
                             self.view.bringSubviewToFront(self.userListRateLimitView)
                         } else {
                             self.userListRateLimitView.isHidden = true
                         }
+                    
                         if self.presentedViewController == nil {
                             let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
