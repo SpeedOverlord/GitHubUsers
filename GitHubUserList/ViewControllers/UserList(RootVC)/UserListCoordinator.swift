@@ -30,15 +30,6 @@ class UserListCoordinator: Coordinator {
             self?.navigateToUserDetailPage(with: userName)
         }
         let vc = UserListViewController(viewModel: viewModel)
-        vc.title = String(localized: "gitHub_user_list")
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.labelColor]
-        appearance.backgroundColor = .backgroundColor
-
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
         navigationController.pushViewController(vc, animated: false)
     }
 }

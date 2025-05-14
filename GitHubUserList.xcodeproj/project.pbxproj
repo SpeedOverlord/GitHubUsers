@@ -42,6 +42,7 @@
 		187527192DD487A300E2AE9D /* UserDetailErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527182DD487A200E2AE9D /* UserDetailErrorView.swift */; };
 		1875271B2DD48E7B00E2AE9D /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875271A2DD48E7800E2AE9D /* UserDetailView.swift */; };
 		1875271D2DD490F600E2AE9D /* UserDetailPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */; };
+		187527212DD4B12300E2AE9D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527202DD4B11A00E2AE9D /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		187527182DD487A200E2AE9D /* UserDetailErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailErrorView.swift; sourceTree = "<group>"; };
 		1875271A2DD48E7800E2AE9D /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		1875271C2DD490F100E2AE9D /* UserDetailPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailPresentable.swift; sourceTree = "<group>"; };
+		187527202DD4B11A00E2AE9D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -189,6 +191,7 @@
 				187526BF2DD41D2900E2AE9D /* AppDelegate.swift */,
 				187526C62DD41D2900E2AE9D /* SceneDelegate.swift */,
 				187526BE2DD41D2900E2AE9D /* BaseCoordinator.swift */,
+				187527202DD4B11A00E2AE9D /* BaseViewController.swift */,
 				187526BD2DD41D2900E2AE9D /* ViewControllers */,
 				187526C02DD41D2900E2AE9D /* Assets.xcassets */,
 				187526C12DD41D2900E2AE9D /* Info.plist */,
@@ -453,6 +456,7 @@
 				187527102DD482B600E2AE9D /* UserListAPIServiceProtocol.swift in Sources */,
 				187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */,
 				1875271B2DD48E7B00E2AE9D /* UserDetailView.swift in Sources */,
+				187527212DD4B12300E2AE9D /* BaseViewController.swift in Sources */,
 				187526C92DD41D2900E2AE9D /* UserListViewController.swift in Sources */,
 				1875270E2DD4829000E2AE9D /* UserDetailAPIServiceProtocol.swift in Sources */,
 				187526D92DD4261100E2AE9D /* UserListViewModel.swift in Sources */,

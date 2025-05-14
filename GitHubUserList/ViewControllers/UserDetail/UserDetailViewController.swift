@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class UserDetailViewController: UIViewController {
+class UserDetailViewController: BaseViewController {
 
     private let viewModel: UserDetailViewModel
     private var cancellables = Set<AnyCancellable>()

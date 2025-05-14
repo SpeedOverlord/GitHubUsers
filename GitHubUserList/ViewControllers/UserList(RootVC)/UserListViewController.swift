@@ -16,7 +16,7 @@ enum UserListItem: Hashable {
     case cell(GitHubUser)
 }
 
-class UserListViewController: UIViewController {
+class UserListViewController: BaseViewController {
     private var collectionView: UICollectionView!
     private let viewModel: UserListViewModel
     var dataSource: UICollectionViewDiffableDataSource<UserListSection, UserListItem>?
@@ -45,6 +45,7 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackgroundView()
+        setupTitle()
         setupSubviews()
         setupCollectionView()
         configureDataSource()
@@ -55,6 +56,10 @@ class UserListViewController: UIViewController {
     
     private func setupBackgroundView() {
         view.backgroundColor = .backgroundColor
+    }
+    
+    private func setupTitle() {
+        title = String(localized: "gitHub_user_list")
     }
     
     private func setupSubviews() {
@@ -169,7 +174,7 @@ extension UserListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
 
         // 觸發條件為幾乎滑到底部時
-        let threshold: CGFloat = 100 // 緩衝距離
+        let threshold: CGFloat = 150 // 緩衝距離
         let isNearBottom = offsetY + height >= contentHeight - threshold
         
         if isNearBottom {
