@@ -42,8 +42,19 @@ final class UserDetailAPIService: UserDetailAPIServiceProtocol  {
         }
 
         var request = URLRequest(url: url)
-        request.cachePolicy = .reloadIgnoringLocalCacheData
+        request.cachePolicy = .reloadRevalidatingCacheData
+        
+        if let cachedResponse = URLCache.shared.cachedResponse(for: request) {
+            do {
+                let decoded = try JSONDecoder().decode(GitHubUserDetail.self, from: cachedResponse.data)
+                return Just(decoded)
+                    .setFailureType(to: UserDetailAPIError.self)
+                    .eraseToAnyPublisher()
+            } catch {}
+        }
 
+    
+        request.cachePolicy = .reloadIgnoringLocalCacheData
         // 加入 If-None-Match
         if let etag = ETagCache.shared.etag(for: urlString) {
             request.setValue(etag, forHTTPHeaderField: "If-None-Match")
