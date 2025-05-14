@@ -6,24 +6,125 @@
 //
 
 import UIKit
+import Combine
+
+enum UserListSection: Hashable {
+    case main
+}
+
+enum UserListItem: Hashable {
+    case cell(GitHubUser)
+}
 
 class UserListViewController: UIViewController {
+    private var collectionView: UICollectionView!
+    private let viewModel: UserListViewModel
+    var dataSource: UICollectionViewDiffableDataSource<UserListSection, UserListItem>?
+    private var cancellables = Set<AnyCancellable>()
+
+    init(viewModel: UserListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        // Do any additional setup after loading the view.
+        setupCollectionView()
+        configureDataSource()
+        layoutView()
+        bindViewModel()
+        viewModel.fetchUsers()
+    }
+
+    private func setupCollectionView() {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+             
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(UserGeneralCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureDataSource() {
+          // 設定 dataSource，並提供 cell 的配置方法
+          dataSource = UICollectionViewDiffableDataSource<UserListSection, UserListItem>(collectionView: collectionView) { (collectionView, indexPath, user) -> UICollectionViewCell? in
+              guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UserCellable else {
+                  return nil
+              }
+              switch user {
+              case .cell(let u):
+                  cell.configure(user: u)
+              }
+              return cell
+          }
+      }
+    
+    private func layoutView() {
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
-    */
 
+    private func bindViewModel() {
+        viewModel.$users
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] users in
+                
+                var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
+                snapshot.appendSections([.main])
+                snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
+                self?.dataSource?.apply(snapshot, animatingDifferences: true)
+            }
+            .store(in: &cancellables)
+
+        viewModel.$error
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] error in
+                switch error {
+                case .reachedRateLimit:
+                    let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    })
+                    self?.present(alert, animated: true)
+                    
+                default:
+                    let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in
+                        self?.viewModel.fetchUsers()
+                    })
+                    self?.present(alert, animated: true)
+                }
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension UserListViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+
+        if offsetY > contentHeight - height * 2 {
+            viewModel.fetchUsers()
+        }
+    }
 }

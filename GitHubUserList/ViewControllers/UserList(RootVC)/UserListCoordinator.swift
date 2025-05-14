@@ -18,7 +18,9 @@ class UserListCoordinator: Coordinator {
 
     // We don't have to use animation because this is the RootViewController.
     func start() {
-        let vc = UserListViewController()
+        let viewModel = UserListViewModel(apiService: UserListAPIService())
+        let vc = UserListViewController(viewModel: viewModel)
+        vc.navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(vc, animated: false)
     }
 }
