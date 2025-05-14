@@ -541,6 +541,7 @@
 				DEVELOPMENT_TEAM = 856SN3VV7T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubUserList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHub Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -572,6 +573,7 @@
 				DEVELOPMENT_TEAM = 856SN3VV7T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubUserList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHub Users";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
