@@ -8,10 +8,12 @@
 import UIKit
 
 final class UserDetailView: UIView {
-
+    
+    var blogDidTap: ((URL) -> Void)?
+    
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
-
+    
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
@@ -19,7 +21,7 @@ final class UserDetailView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +50,9 @@ final class UserDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -99,21 +103,21 @@ final class UserDetailView: UIView {
         label.numberOfLines = 0
         return label
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         setup()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setup() {
         setupViews()
     }
-
+    
     private func setupViews() {
         self.addSubview(avatarImageView)
         self.addSubview(scrollView)
@@ -122,16 +126,17 @@ final class UserDetailView: UIView {
         contentStackView.spacing = 20
         contentStackView.alignment = .leading
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.isUserInteractionEnabled = true
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-   
+        
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             avatarImageView.heightAnchor.constraint(equalToConstant: 150),
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
+            
             scrollView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
@@ -143,7 +148,7 @@ final class UserDetailView: UIView {
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -16),
             contentStackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -32),
         ])
-
+        
         contentStackView.addArrangedSubview(nameLabel)
         contentStackView.addArrangedSubview(loginLabel)
         contentStackView.addArrangedSubview(companyLabel)
@@ -163,12 +168,55 @@ extension UserDetailView: UserDetailPresentable {
         nameLabel.text = String(localized: "name") + " \(detail.name ?? "-")"
         loginLabel.text = String(localized: "userName") + " \(detail.login)"
         companyLabel.text = String(localized: "company") + " \(detail.company ?? "-")"
-        blogLabel.text = String(localized: "blog") + " \(detail.blog ?? "-")"
+        
+        
+        if let blog = detail.blog, let url = URL(string: blog) {
+            let localizedPrefix = String(localized: "blog") + " "
+            
+            let fullString = NSMutableAttributedString(string: localizedPrefix)
+            
+            let blogLink = NSAttributedString(
+                string: blog,
+                attributes: [
+                    .link: url,
+                    .foregroundColor: UIColor.systemBlue,
+                    .underlineStyle: NSUnderlineStyle.single.rawValue
+                ]
+            )
+            
+            fullString.append(blogLink)
+            blogLabel.attributedText = fullString
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(blogLinkTapped))
+            gesture.cancelsTouchesInView = false
+            blogLabel.addGestureRecognizer(gesture)
+        } else {
+            blogLabel.text = String(localized: "blog") + " \(detail.blog ?? "-")"
+        }
+        
+        
         locationLabel.text = String(localized: "location") + " \(detail.location ?? "-")"
         emailLabel.text = String(localized: "email") + " \(detail.email ?? "-")"
         bioLabel.text = String(localized: "bio") + " \(detail.bio ?? "-")"
         repoLabel.text = String(localized: "public_repos_count") + " \(detail.public_repos)"
         followersLabel.text = String(localized: "followers_count") + " \(detail.followers)"
         followingLabel.text = String(localized: "following_count") + " \(detail.following)"
+    }
+    
+    @objc private func blogLinkTapped() {
+        guard let text = blogLabel.attributedText?.string,
+              let blog = text.components(separatedBy: ": ").last,
+              let url = URL(string: normalizeURLString(blog)) else {
+            return
+        }
+        blogDidTap?(url)
+    }
+    
+    private func normalizeURLString(_ urlString: String) -> String {
+        if urlString.lowercased().hasPrefix("http://") || urlString.lowercased().hasPrefix("https://") {
+            return urlString
+        } else {
+            return "https://\(urlString)"
+        }
     }
 }

@@ -15,6 +15,9 @@ class UserDetailViewController: UIViewController {
 
     private lazy var userDetailView: UserDetailView = {
         let view = UserDetailView()
+        view.blogDidTap = { url in
+            UIApplication.shared.open(url)
+        }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -75,7 +78,7 @@ class UserDetailViewController: UIViewController {
                 case .failure(let error):
                     var message: String = ""
                     switch error {
-                    case .reachedRateLimit(let response):
+                    case .reachedRateLimit(_):
                         message = String(localized: "temporarily_unavailable")
                     default:
                         message = String(localized: "unknown_error")
