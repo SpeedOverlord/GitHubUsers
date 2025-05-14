@@ -11,7 +11,6 @@
 		187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526BE2DD41D2900E2AE9D /* BaseCoordinator.swift */; };
 		187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526BF2DD41D2900E2AE9D /* AppDelegate.swift */; };
 		187526CC2DD41D2900E2AE9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526C62DD41D2900E2AE9D /* SceneDelegate.swift */; };
-		187526CD2DD41D2900E2AE9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526C72DD41D2900E2AE9D /* ViewController.swift */; };
 		187526CE2DD41D2900E2AE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187526C02DD41D2900E2AE9D /* Assets.xcassets */; };
 		187526D02DD41D2900E2AE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187526C32DD41D2900E2AE9D /* LaunchScreen.storyboard */; };
 		187526D12DD41D2900E2AE9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187526C52DD41D2900E2AE9D /* Main.storyboard */; };
@@ -26,6 +25,8 @@
 		187526F42DD44C3200E2AE9D /* GitHubAPIErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526F32DD44C2800E2AE9D /* GitHubAPIErrorResponse.swift */; };
 		187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
 		187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */; };
+		187526F92DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
+		187526FA2DD4630300E2AE9D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 187526F82DD4630300E2AE9D /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,6 @@
 		187526C22DD41D2900E2AE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187526C42DD41D2900E2AE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		187526C62DD41D2900E2AE9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		187526C72DD41D2900E2AE9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		187526D22DD41D9900E2AE9D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		187526D52DD4210000E2AE9D /* UserListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCoordinator.swift; sourceTree = "<group>"; };
 		187526D82DD4260800E2AE9D /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
@@ -67,6 +67,7 @@
 		187526F12DD43E6800E2AE9D /* UserCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellable.swift; sourceTree = "<group>"; };
 		187526F32DD44C2800E2AE9D /* GitHubAPIErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIErrorResponse.swift; sourceTree = "<group>"; };
 		187526F52DD462AC00E2AE9D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		187526F82DD4630300E2AE9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -161,7 +162,7 @@
 				187526C12DD41D2900E2AE9D /* Info.plist */,
 				187526C32DD41D2900E2AE9D /* LaunchScreen.storyboard */,
 				187526C52DD41D2900E2AE9D /* Main.storyboard */,
-				187526C72DD41D2900E2AE9D /* ViewController.swift */,
+				187526F82DD4630300E2AE9D /* Localizable.xcstrings */,
 			);
 			path = GitHubUserList;
 			sourceTree = "<group>";
@@ -291,6 +292,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 187526742DD41ABB00E2AE9D;
 			minimizedProjectReferenceProxies = 1;
@@ -315,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187526CE2DD41D2900E2AE9D /* Assets.xcassets in Resources */,
+				187526F92DD4630300E2AE9D /* Localizable.xcstrings in Resources */,
 				187526D02DD41D2900E2AE9D /* LaunchScreen.storyboard in Resources */,
 				187526F72DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 				187526D12DD41D2900E2AE9D /* Main.storyboard in Resources */,
@@ -325,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187526FA2DD4630300E2AE9D /* Localizable.xcstrings in Resources */,
 				187526F62DD462AC00E2AE9D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,7 +359,6 @@
 				187526DE2DD4284400E2AE9D /* UserListAPIService.swift in Sources */,
 				187526D62DD4210000E2AE9D /* UserListCoordinator.swift in Sources */,
 				187526F02DD43B9000E2AE9D /* UserGeneralCell.swift in Sources */,
-				187526CD2DD41D2900E2AE9D /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +533,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -587,6 +591,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
