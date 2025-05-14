@@ -113,7 +113,6 @@ class UserListViewController: UIViewController {
         viewModel.$users
             .receive(on: DispatchQueue.main)
             .sink { [weak self] users in
-                
                 var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
@@ -129,7 +128,7 @@ class UserListViewController: UIViewController {
             .sink { [weak self] error in
                 guard let self = self else { return }
                 switch error {
-                case .reachedRateLimit:
+                case .reachedRateLimit(let response):
                     let itemCount = self.collectionView.numberOfItems(inSection: 0)
                     if itemCount == 0 {
                         self.userListRateLimitView.isHidden = false
@@ -138,7 +137,7 @@ class UserListViewController: UIViewController {
                         self.userListRateLimitView.isHidden = true
                     }
                     if self.presentedViewController == nil {
-                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                         })
                         self.present(alert, animated: true)
@@ -158,6 +157,10 @@ class UserListViewController: UIViewController {
 }
 
 extension UserListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectUser(at: indexPath)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard !isFetching else { return }
         

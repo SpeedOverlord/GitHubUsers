@@ -12,11 +12,11 @@ enum UserListAPIError: Error {
     case networkError(Error)
     case decodingError(Error)
     case unknownStatusCode(Int)
-    case reachedRateLimit(GitHubAPIErrorResponse)
+    case reachedRateLimit(GitHubUserListAPIErrorResponse)
 }
 
 
-class UserListAPIService {
+final class UserListAPIService: UserListAPIServiceProtocol {
     private let baseURL = "https://api.github.com/users"
     private let perPage = 20
 
@@ -40,7 +40,7 @@ class UserListAPIService {
                     return data
                 } else {
                     // 嘗試解碼 GitHub API 的錯誤格式
-                    if let apiError = try? JSONDecoder().decode(GitHubAPIErrorResponse.self, from: data) {
+                    if let apiError = try? JSONDecoder().decode(GitHubUserListAPIErrorResponse.self, from: data) {
                         throw UserListAPIError.reachedRateLimit(apiError)
                     } else {
                         throw UserListAPIError.unknownStatusCode(httpResponse.statusCode)

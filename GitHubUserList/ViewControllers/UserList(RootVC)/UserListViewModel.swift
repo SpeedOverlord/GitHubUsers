@@ -14,16 +14,21 @@ class UserListViewModel {
     @Published var isLoading: Bool = false
 
     private var userImages: [Int: UIImage] = [:]
-    private let apiService: UserListAPIService
+    private let apiService: UserListAPIServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     private var since: Int = 0
     private var isFetching: Bool = false
     private var hasMoreData: Bool = true
+    
+    var onSelectUser: ((String) -> Void)?
 
     init(apiService: UserListAPIService) {
         self.apiService = apiService
     }
+}
 
+//MARK: - API handling
+extension UserListViewModel {
     func fetchUsers() {
         guard !isFetching && hasMoreData else { return }
         isFetching = true
@@ -80,3 +85,11 @@ class UserListViewModel {
     }
 }
 
+//MARK: - Cell selection handling
+extension UserListViewModel {
+    func selectUser(at indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        let login = user.login
+        onSelectUser?(login)
+    }
+}

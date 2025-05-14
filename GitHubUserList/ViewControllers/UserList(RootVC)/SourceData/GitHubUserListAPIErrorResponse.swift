@@ -5,6 +5,6 @@
 //  Created by Tim Chen on 2025/5/14.
 //
 
-struct GitHubAPIErrorResponse: Codable {
+struct GitHubUserListAPIErrorResponse: Codable {
     let message: String
 }

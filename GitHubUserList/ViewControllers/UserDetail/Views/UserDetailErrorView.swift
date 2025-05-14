@@ -1,5 +1,5 @@
 //
-//  UserListRateLimitView.swift
+//  UserDetailRateLimitView.swift
 //  GitHubUserList
 //
 //  Created by Tim Chen on 2025/5/14.
@@ -7,13 +7,18 @@
 
 import UIKit
 
-class UserListRateLimitView: UIView {
+final class UserDetailErrorView: UIView {
     
     var onRetry: (() -> Void)?
+    var message: String? {
+        didSet {
+            messageLabel.text = message
+        }
+    }
     
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
-        label.text = String(localized: "temporarily_unavailable")
+        label.text = message
         label.textColor = .labelColor
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.numberOfLines = 0
@@ -33,7 +38,6 @@ class UserListRateLimitView: UIView {
     }()
     
     // MARK: - Init
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -64,4 +68,3 @@ class UserListRateLimitView: UIView {
           onRetry?()
     }
 }
-

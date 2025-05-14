@@ -1,0 +1,93 @@
+//
+//  UserDetailViewController.swift
+//  GitHubUserList
+//
+//  Created by Tim Chen on 2025/5/14.
+//
+
+import UIKit
+import Combine
+
+class UserDetailViewController: UIViewController {
+
+    private let viewModel: UserDetailViewModel
+    private var cancellables = Set<AnyCancellable>()
+
+    private lazy var userDetailView: UserDetailView = {
+        let view = UserDetailView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var userDetailErrorView: UserDetailErrorView = {
+        let view = UserDetailErrorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
+    init(viewModel: UserDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupBackgroundView()
+        setupSubviews()
+        bindViewModel()
+        viewModel.fetchDetail()
+    }
+
+    private func setupBackgroundView() {
+        view.backgroundColor = .backgroundColor
+    }
+    
+    private func setupSubviews() {
+        view.addSubview(userDetailErrorView)
+        view.addSubview(userDetailView)
+        
+        NSLayoutConstraint.activate([
+            userDetailErrorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userDetailErrorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            userDetailErrorView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            userDetailErrorView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            
+            userDetailView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userDetailView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            userDetailView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            userDetailView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+    }
+    
+    private func bindViewModel() {
+        viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .loading, .idle:
+                    break
+                case .failure(let error):
+                    var message: String = ""
+                    switch error {
+                    case .reachedRateLimit(let response):
+                        message = String(localized: "temporarily_unavailable")
+                    default:
+                        message = String(localized: "unknown_error")
+                    }
+                    self.userDetailErrorView.message = message
+                    self.userDetailErrorView.isHidden = false
+                    self.view.bringSubviewToFront(self.userDetailErrorView)
+                case .success(let detail):
+                    self.view.bringSubviewToFront(self.userDetailView)
+                    self.userDetailView.configure(detail: detail)
+                }
+            }
+            .store(in: &cancellables)
+    }
+}
