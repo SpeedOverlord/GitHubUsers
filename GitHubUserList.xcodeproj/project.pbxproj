@@ -30,6 +30,7 @@
 		187526FD2DD46B0900E2AE9D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */; };
 		187526FF2DD46C9B00E2AE9D /* UIColor+UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */; };
 		187527022DD46CCB00E2AE9D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */; };
+		187527042DD4747C00E2AE9D /* UserListRateLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187527032DD4746300E2AE9D /* UserListRateLimitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		187526FC2DD46B0100E2AE9D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		187526FE2DD46C8700E2AE9D /* UIColor+UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UserInterfaceStyle.swift"; sourceTree = "<group>"; };
 		187527012DD46CBC00E2AE9D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		187527032DD4746300E2AE9D /* UserListRateLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRateLimitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -195,6 +197,7 @@
 		187526EE2DD43B7400E2AE9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				187527032DD4746300E2AE9D /* UserListRateLimitView.swift */,
 				187526F12DD43E6800E2AE9D /* UserCellable.swift */,
 				187526EF2DD43B7F00E2AE9D /* UserGeneralCell.swift */,
 			);
@@ -379,6 +382,7 @@
 				187526CA2DD41D2900E2AE9D /* BaseCoordinator.swift in Sources */,
 				187526DC2DD4265800E2AE9D /* GitHubUser.swift in Sources */,
 				187526D32DD41D9900E2AE9D /* Coordinator.swift in Sources */,
+				187527042DD4747C00E2AE9D /* UserListRateLimitView.swift in Sources */,
 				187526CB2DD41D2900E2AE9D /* AppDelegate.swift in Sources */,
 				187526F42DD44C3200E2AE9D /* GitHubAPIErrorResponse.swift in Sources */,
 				187526CC2DD41D2900E2AE9D /* SceneDelegate.swift in Sources */,

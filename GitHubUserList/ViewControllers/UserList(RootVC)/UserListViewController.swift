@@ -22,6 +22,13 @@ class UserListViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<UserListSection, UserListItem>?
     private var cancellables = Set<AnyCancellable>()
     private var isFetching: Bool = false
+    
+    private lazy var userListRateLimitView: UserListRateLimitView = {
+        let view = UserListRateLimitView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
 
     init(viewModel: UserListViewModel) {
         self.viewModel = viewModel
@@ -35,6 +42,7 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackgroundView()
+        setupSubviews()
         setupCollectionView()
         configureDataSource()
         layoutView()
@@ -44,6 +52,17 @@ class UserListViewController: UIViewController {
     
     private func setupBackgroundView() {
         view.backgroundColor = .backgroundColor
+    }
+    
+    private func setupSubviews() {
+        view.addSubview(userListRateLimitView)
+        
+        NSLayoutConstraint.activate([
+            userListRateLimitView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userListRateLimitView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            userListRateLimitView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            userListRateLimitView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
     }
 
     private func setupCollectionView() {
@@ -105,19 +124,30 @@ class UserListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] error in
+                guard let self = self else { return }
                 switch error {
                 case .reachedRateLimit:
-                    let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                    })
-                    self?.present(alert, animated: true)
-                    
+                    let itemCount = self.collectionView.numberOfItems(inSection: 0)
+                    if itemCount == 0 {
+                        self.userListRateLimitView.isHidden = false
+                        self.view.bringSubviewToFront(self.userListRateLimitView)
+                    } else {
+                        self.userListRateLimitView.isHidden = true
+                    }
+                    if self.presentedViewController == nil {
+                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                        })
+                        self.present(alert, animated: true)
+                    }
                 default:
-                    let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in
-                        self?.viewModel.fetchUsers()
-                    })
-                    self?.present(alert, animated: true)
+                    if self.presentedViewController == nil {
+                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self]_ in
+                            self?.viewModel.fetchUsers()
+                        })
+                        self.present(alert, animated: true)
+                    }
                 }
             }
             .store(in: &cancellables)
@@ -132,8 +162,9 @@ extension UserListViewController: UICollectionViewDelegate {
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
 
-        // 調整觸發條件為幾乎滑到底部時
-        let threshold: CGFloat = 20 // 緩衝距離，可依實際調整
+        // 觸發條件為幾乎滑到底部時
+        let threshold: CGFloat = 30 // 緩衝距離
+        print("offsetY + height = \(offsetY + height), contentHeight - threshold = \(contentHeight - threshold)")
         let isNearBottom = offsetY + height >= contentHeight - threshold
         
         if isNearBottom {
