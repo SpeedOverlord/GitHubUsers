@@ -28,7 +28,6 @@ class UserListViewModel {
         guard !isFetching && hasMoreData else { return }
         isFetching = true
         isLoading = true
-
         apiService.fetchUsers(since: since)
             .sink { [weak self] completion in
                 self?.isFetching = false

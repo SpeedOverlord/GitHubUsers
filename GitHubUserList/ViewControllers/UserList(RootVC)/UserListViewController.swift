@@ -21,6 +21,7 @@ class UserListViewController: UIViewController {
     private let viewModel: UserListViewModel
     var dataSource: UICollectionViewDiffableDataSource<UserListSection, UserListItem>?
     private var cancellables = Set<AnyCancellable>()
+    private var isFetching: Bool = false
 
     init(viewModel: UserListViewModel) {
         self.viewModel = viewModel
@@ -94,7 +95,9 @@ class UserListViewController: UIViewController {
                 var snapshot = NSDiffableDataSourceSnapshot<UserListSection, UserListItem>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(users.map { .cell($0) }, toSection: .main)
-                self?.dataSource?.apply(snapshot, animatingDifferences: true)
+                self?.dataSource?.apply(snapshot, animatingDifferences: true) { [weak self] in
+                    self?.isFetching = false
+                }
             }
             .store(in: &cancellables)
 
@@ -123,11 +126,18 @@ class UserListViewController: UIViewController {
 
 extension UserListViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !isFetching else { return }
+        
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
 
-        if offsetY > contentHeight - height * 2 {
+        // 調整觸發條件為幾乎滑到底部時
+        let threshold: CGFloat = 20 // 緩衝距離，可依實際調整
+        let isNearBottom = offsetY + height >= contentHeight - threshold
+        
+        if isNearBottom {
+            self.isFetching = true
             viewModel.fetchUsers()
         }
     }
